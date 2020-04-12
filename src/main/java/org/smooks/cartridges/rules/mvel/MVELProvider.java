@@ -15,17 +15,18 @@
 */
 package org.smooks.cartridges.rules.mvel;
 
-import au.com.bytecode.opencsv.CSVReader;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.smooks.SmooksException;
+import org.smooks.cartridges.rules.RuleEvalResult;
+import org.smooks.cartridges.rules.RuleProvider;
 import org.smooks.cdr.SmooksConfigurationException;
 import org.smooks.container.ExecutionContext;
 import org.smooks.expression.ExpressionEvaluator;
 import org.smooks.expression.MVELExpressionEvaluator;
 import org.smooks.resource.URIResourceLocator;
-import org.smooks.cartridges.rules.RuleEvalResult;
-import org.smooks.cartridges.rules.RuleProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -100,7 +101,7 @@ public class MVELProvider implements RuleProvider {
         List<String[]> entries;
         try {
             entries = csvLineReader.readAll();
-        } catch (IOException e) {
+        } catch (IOException | CsvException e) {
             throw new SmooksConfigurationException("Error reading MVEL rule file (CSV format) '" + src + "'.", e);
         } finally {
             try {
