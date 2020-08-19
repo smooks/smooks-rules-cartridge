@@ -44,14 +44,15 @@ package org.smooks.cartridges.rules;
 
 import org.smooks.SmooksException;
 import org.smooks.cdr.SmooksConfigurationException;
-import org.smooks.cdr.annotation.AppContext;
-import org.smooks.cdr.annotation.ConfigParam;
-import org.smooks.cdr.annotation.ConfigParam.Use;
 import org.smooks.container.ApplicationContext;
 import org.smooks.delivery.ContentHandler;
-import org.smooks.delivery.annotation.Initialize;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.util.Optional;
 
 /**
  * RulesProviderFactory is responsible for creating {@link RuleProvider}s
@@ -60,8 +61,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author <a href="mailto:danielbevenius@gmail.com">Daniel Bevenius</a>
  */
-public final class RulesProviderFactory implements ContentHandler<RuleProvider>
-{
+public final class RulesProviderFactory implements ContentHandler {
     /**
      * Logger.
      */
@@ -70,69 +70,57 @@ public final class RulesProviderFactory implements ContentHandler<RuleProvider>
     /**
      * The Smooks {@link ApplicationContext}.
      */
-    @AppContext
+    @Inject
     private ApplicationContext applicationContext;
 
     /**
      * The rule name to be used.
      */
-    @ConfigParam(use = Use.REQUIRED )
+    @Inject
     private String name;
 
     /**
      * The {@link RuleProvider} implementation to be used.
      */
-    @ConfigParam(name = "provider", use = Use.REQUIRED)
+    @Inject
+    @Named("provider")
     private Class<RuleProvider> provider;
 
     /**
      * The source of the rule. Is implementation dependent, may be a file for example.
      */
-    @ConfigParam(use = Use.OPTIONAL)
-    private String src;
+    @Inject
+    private Optional<String> src;
 
     /**
      * Creates and installs the configured rule provider.
      *
      * @throws SmooksConfigurationException
      */
-    @Initialize
-    public void installRuleProvider() throws SmooksConfigurationException
-    {
+    @PostConstruct
+    public void installRuleProvider() throws SmooksConfigurationException {
         LOGGER.debug(this.toString());
-        if(RuleProvider.class.isAssignableFrom(provider))
-        {
+        if (RuleProvider.class.isAssignableFrom(provider)) {
             final RuleProvider providerImpl = createProvider(provider);
             providerImpl.setName(name);
-            providerImpl.setSrc(src);
+            providerImpl.setSrc(src.orElse(null));
 
             RuleProviderAccessor.add(applicationContext, providerImpl);
-        }
-        else
-        {
+        } else {
             throw new SmooksConfigurationException("Invalid rule provider configuration :'" + this + "'");
         }
     }
 
-    RuleProvider createProvider(final Class<? extends RuleProvider> providerClass) throws SmooksException
-    {
-        try
-        {
+    RuleProvider createProvider(final Class<? extends RuleProvider> providerClass) throws SmooksException {
+        try {
             return providerClass.newInstance();
-        }
-        catch (final InstantiationException e)
-        {
-            throw new SmooksException(e.getMessage(), e);
-        }
-        catch (final IllegalAccessException e)
-        {
+        } catch (final InstantiationException | IllegalAccessException e) {
             throw new SmooksException(e.getMessage(), e);
         }
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return String.format("%s [name=%s, src=%s, provider=%s]", getClass().getSimpleName(), name, src, provider);
     }
 
