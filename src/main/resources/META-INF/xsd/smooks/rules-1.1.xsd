@@ -2,10 +2,10 @@
 <xs:schema elementFormDefault="qualified"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="https://www.smooks.org/xsd/smooks/rules-1.1.xsd"
-           xmlns:smooks-rules="https://www.smooks.org/xsd/smooks/rules-1.1.xsd"
-           xmlns:smooks="https://www.smooks.org/xsd/smooks-1.2.xsd">
+           xmlns:rules="https://www.smooks.org/xsd/smooks/rules-1.1.xsd"
+           xmlns:smooks="https://www.smooks.org/xsd/smooks-2.0.xsd">
 
-    <xs:import namespace="https://www.smooks.org/xsd/smooks-1.2.xsd"/>
+    <xs:import namespace="https://www.smooks.org/xsd/smooks-2.0.xsd"/>
 
     <xs:annotation>
         <xs:documentation xml:lang="en">Smooks Rule Bases Configuration</xs:documentation>
@@ -16,7 +16,7 @@
         <xs:complexContent>
             <xs:extension base="smooks:element-visitor">
                 <xs:sequence minOccurs="1" maxOccurs="unbounded">
-                    <xs:element name="ruleBase" type="smooks-rules:ruleBase"/>
+                    <xs:element name="ruleBase" type="rules:ruleBase"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
