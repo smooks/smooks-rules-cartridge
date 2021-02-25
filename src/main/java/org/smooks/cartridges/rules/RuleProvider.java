@@ -42,8 +42,8 @@
  */
 package org.smooks.cartridges.rules;
 
-import org.smooks.SmooksException;
-import org.smooks.container.ExecutionContext;
+import org.smooks.api.ExecutionContext;
+import org.smooks.api.SmooksException;
 
 /**
  * RuleProvider declares the contract which must be followed to make

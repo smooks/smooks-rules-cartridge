@@ -46,13 +46,13 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.smooks.SmooksException;
+import org.smooks.api.ExecutionContext;
+import org.smooks.api.SmooksConfigException;
+import org.smooks.api.SmooksException;
+import org.smooks.api.expression.ExpressionEvaluator;
 import org.smooks.cartridges.rules.RuleEvalResult;
 import org.smooks.cartridges.rules.RuleProvider;
-import org.smooks.cdr.SmooksConfigurationException;
-import org.smooks.container.ExecutionContext;
-import org.smooks.expression.ExpressionEvaluator;
-import org.smooks.expression.MVELExpressionEvaluator;
+import org.smooks.engine.expression.MVELExpressionEvaluator;
 import org.smooks.resource.URIResourceLocator;
 
 import java.io.IOException;
@@ -129,7 +129,7 @@ public class MVELProvider implements RuleProvider {
         try {
             entries = csvLineReader.readAll();
         } catch (IOException | CsvException e) {
-            throw new SmooksConfigurationException("Error reading MVEL rule file (CSV format) '" + src + "'.", e);
+            throw new SmooksConfigException("Error reading MVEL rule file (CSV format) '" + src + "'.", e);
         } finally {
             try {
                 ruleStream.close();
