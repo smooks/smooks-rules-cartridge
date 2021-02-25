@@ -42,12 +42,12 @@
  */
 package org.smooks.cartridges.rules;
 
+import org.smooks.api.ApplicationContext;
+import org.smooks.api.SmooksException;
+import org.smooks.assertion.AssertArgument;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import org.smooks.SmooksException;
-import org.smooks.assertion.AssertArgument;
-import org.smooks.container.ApplicationContext;
 
 /**
  * RuleProviderAccessor provides convenience methods for adding and getting

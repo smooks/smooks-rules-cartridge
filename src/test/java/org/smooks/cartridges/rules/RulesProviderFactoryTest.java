@@ -42,22 +42,20 @@
  */
 package org.smooks.cartridges.rules;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.smooks.Smooks;
+import org.smooks.api.ExecutionContext;
+import org.smooks.api.SmooksException;
+import org.smooks.cartridges.rules.regex.RegexRuleEvalResult;
+import org.smooks.io.payload.StringResult;
+import org.smooks.io.payload.StringSource;
+import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.util.Map;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.smooks.Smooks;
-import org.smooks.SmooksException;
-import org.smooks.cartridges.rules.regex.RegexRuleEvalResult;
-import org.smooks.container.ExecutionContext;
-import org.smooks.payload.StringResult;
-import org.smooks.payload.StringSource;
-import org.xml.sax.SAXException;
+import static org.junit.Assert.*;
 
 /**
  * Unit test for RuleProviderFactory.
@@ -93,30 +91,23 @@ public class RulesProviderFactoryTest
         assertEquals("MockProvider", provider.getName());
     }
 
-    public static class MockProvider implements RuleProvider
-    {
-        public String getName()
-        {
+    public static class MockProvider implements RuleProvider {
+        public String getName() {
             return getClass().getSimpleName();
         }
 
-        public String getSrc()
-        {
+        public String getSrc() {
             return null;
         }
 
-        public void setSrc(String src)
-        {
+        public void setSrc(String src) {
         }
 
-        public RuleEvalResult evaluate(String ruleName, CharSequence selectedData, ExecutionContext context) throws SmooksException
-        {
+        public RuleEvalResult evaluate(String ruleName, CharSequence selectedData, ExecutionContext context) throws SmooksException {
             return new RegexRuleEvalResult(true, ruleName, "MockProvider", null, selectedData.toString());
         }
 
-        public void setName(String name)
-        {
+        public void setName(String name) {
         }
     }
-
 }

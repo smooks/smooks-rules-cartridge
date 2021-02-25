@@ -42,13 +42,14 @@
  */
 package org.smooks.cartridges.rules;
 
+import org.junit.Test;
+import org.smooks.api.ExecutionContext;
+import org.smooks.api.SmooksException;
+import org.smooks.cartridges.rules.regex.RegexRuleEvalResult;
+import org.smooks.tck.MockApplicationContext;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import org.junit.Test;
-import org.smooks.SmooksException;
-import org.smooks.cartridges.rules.regex.RegexRuleEvalResult;
-import org.smooks.container.ExecutionContext;
-import org.smooks.container.MockApplicationContext;
 
 /**
  * Unit test for {@link RuleProviderAccessor}.
