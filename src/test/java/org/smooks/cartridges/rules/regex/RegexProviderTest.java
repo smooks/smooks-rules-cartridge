@@ -42,11 +42,11 @@
  */
 package org.smooks.cartridges.rules.regex;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.smooks.container.MockExecutionContext;
+import org.smooks.tck.MockExecutionContext;
+
+import static org.junit.Assert.*;
 
 /**
  * Unit test for RegexProviderTest.

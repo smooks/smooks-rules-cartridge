@@ -45,24 +45,24 @@
 <smooks-resource-list xmlns="https://www.smooks.org/xsd/smooks-2.0.xsd" xmlns:rules="https://www.smooks.org/xsd/smooks/rules-1.1.xsd">
 
     <resource-config selector="rules:ruleBases/ruleBase">
-        <resource>org.smooks.cdr.extension.NewResourceConfig</resource>
+        <resource>org.smooks.engine.resource.extension.NewResourceConfig</resource>
         <param name="resource">org.smooks.cartridges.rules.RulesProviderFactory</param>
     </resource-config>
     
     <resource-config selector="rules:ruleBases/ruleBase">
-        <resource>org.smooks.cdr.extension.MapToResourceConfigFromAttribute</resource>
+        <resource>org.smooks.engine.resource.extension.MapToResourceConfigFromAttribute</resource>
         <param name="attribute">name</param>
         <param name="mapTo">name</param>
     </resource-config>
     
     <resource-config selector="rules:ruleBases/ruleBase">
-        <resource>org.smooks.cdr.extension.MapToResourceConfigFromAttribute</resource>
+        <resource>org.smooks.engine.resource.extension.MapToResourceConfigFromAttribute</resource>
         <param name="attribute">src</param>
         <param name="mapTo">src</param>
     </resource-config>
 
     <resource-config selector="rules:ruleBases/ruleBase">
-        <resource>org.smooks.cdr.extension.MapToResourceConfigFromAttribute</resource>
+        <resource>org.smooks.engine.resource.extension.MapToResourceConfigFromAttribute</resource>
         <param name="attribute">provider</param>
         <param name="mapTo">provider</param>
     </resource-config>

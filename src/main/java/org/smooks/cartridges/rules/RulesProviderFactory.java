@@ -42,12 +42,12 @@
  */
 package org.smooks.cartridges.rules;
 
-import org.smooks.SmooksException;
-import org.smooks.cdr.SmooksConfigurationException;
-import org.smooks.container.ApplicationContext;
-import org.smooks.delivery.ContentHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smooks.api.ApplicationContext;
+import org.smooks.api.SmooksConfigException;
+import org.smooks.api.SmooksException;
+import org.smooks.api.delivery.ContentHandler;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -95,10 +95,10 @@ public final class RulesProviderFactory implements ContentHandler {
     /**
      * Creates and installs the configured rule provider.
      *
-     * @throws SmooksConfigurationException
+     * @throws SmooksConfigException
      */
     @PostConstruct
-    public void installRuleProvider() throws SmooksConfigurationException {
+    public void installRuleProvider() throws SmooksConfigException {
         LOGGER.debug(this.toString());
         if (RuleProvider.class.isAssignableFrom(provider)) {
             final RuleProvider providerImpl = createProvider(provider);
@@ -107,7 +107,7 @@ public final class RulesProviderFactory implements ContentHandler {
 
             RuleProviderAccessor.add(applicationContext, providerImpl);
         } else {
-            throw new SmooksConfigurationException("Invalid rule provider configuration :'" + this + "'");
+            throw new SmooksConfigException("Invalid rule provider configuration :'" + this + "'");
         }
     }
 

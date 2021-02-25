@@ -42,14 +42,14 @@
  */
 package org.smooks.cartridges.rules.regex;
 
-import org.smooks.SmooksException;
-import org.smooks.assertion.AssertArgument;
-import org.smooks.container.ExecutionContext;
-import org.smooks.resource.URIResourceLocator;
-import org.smooks.cartridges.rules.RuleEvalResult;
-import org.smooks.cartridges.rules.RuleProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smooks.api.ExecutionContext;
+import org.smooks.api.SmooksException;
+import org.smooks.assertion.AssertArgument;
+import org.smooks.cartridges.rules.RuleEvalResult;
+import org.smooks.cartridges.rules.RuleProvider;
+import org.smooks.resource.URIResourceLocator;
 
 import java.io.IOException;
 import java.io.InputStream;
