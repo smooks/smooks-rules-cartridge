@@ -150,7 +150,7 @@ image:docs/images/MVEL-csv-rulebase.png[Image:MVEL-csv-rulebase.png]
 ....
 xmlns:rules="https://www.smooks.org/xsd/smooks/rules-1.1.xsd
 ....
-// tag::smooks-rules-cartridge[]
+// end::smooks-rules-cartridge[]
 
 == License
 
