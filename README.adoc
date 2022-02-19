@@ -141,7 +141,7 @@ image:docs/images/MVEL-csv-rulebase.png[Image:MVEL-csv-rulebase.png]
 <dependency>
     <groupId>org.smooks.cartridges</groupId>
     <artifactId>smooks-rules-cartridge</artifactId>
-    <version>2.0.0-M3</version>
+    <version>2.0.0-RC1</version>
 </dependency>
 ----
 
