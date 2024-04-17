@@ -46,7 +46,7 @@ import org.junit.Test;
 import org.smooks.api.ExecutionContext;
 import org.smooks.api.SmooksException;
 import org.smooks.cartridges.rules.regex.RegexRuleEvalResult;
-import org.smooks.tck.MockApplicationContext;
+import org.smooks.testkit.MockApplicationContext;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
