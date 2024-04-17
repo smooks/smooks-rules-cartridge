@@ -44,7 +44,7 @@ package org.smooks.cartridges.rules.regex;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.smooks.tck.MockExecutionContext;
+import org.smooks.testkit.MockExecutionContext;
 
 import static org.junit.Assert.*;
 
