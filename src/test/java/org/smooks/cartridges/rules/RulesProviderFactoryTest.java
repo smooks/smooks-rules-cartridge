@@ -48,14 +48,16 @@ import org.smooks.Smooks;
 import org.smooks.api.ExecutionContext;
 import org.smooks.api.SmooksException;
 import org.smooks.cartridges.rules.regex.RegexRuleEvalResult;
-import org.smooks.io.payload.StringResult;
-import org.smooks.io.payload.StringSource;
+import org.smooks.io.sink.StringSink;
+import org.smooks.io.source.StringSource;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for RuleProviderFactory.
@@ -70,9 +72,9 @@ public class RulesProviderFactoryTest
     {
         final Smooks smooks = new Smooks("/smooks-configs/extended/1.0/smooks-rules-config.xml");
         final StringSource source = new StringSource("<order></order>");
-        final StringResult result = new StringResult();
+        final StringSink sink = new StringSink();
 
-        smooks.filterSource(source, result);
+        smooks.filterSource(source, sink);
 
         final Map<String, RuleProvider> ruleProviders = RuleProviderAccessor.getRuleProviders(smooks.getApplicationContext());
 
